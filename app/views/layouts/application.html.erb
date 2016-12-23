@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SpaStudio</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>SpaStudio</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <%= render 'layouts/header' %>
+
+  <%= yield %>
+
+  <%= render 'layouts/footer' %>
+</body>
+
+<script src='<%= "https://maps.googleapis.com/maps/api/js?key=#{ENV['google_api_key']}&callback=initMap"  %>' async defer></script>
 </html>

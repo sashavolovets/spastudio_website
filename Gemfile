@@ -23,7 +23,18 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
+# Use Bootstrap for layout
+gem 'bootstrap-will_paginate'
+gem 'bootstrap-sass'
+
+# Fontawesome for icons
+gem 'font-awesome-sass'
+gem 'font-awesome-rails'
+
+# Use Figaro for env
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
