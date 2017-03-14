@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Категории</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Изображение</th>
+      <th>Название</th>
+      <th>Услуги</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= image_tag category.image.url(:small) %></td>
+        <td><%= category.name %></td>
+        <td>
+          <ul>
+          <% category.services.each do |service| %>
+            <li><%= link_to "#{service.name}", category_service_path(category, service) %></li>
+          <% end %>
+          </ul>
+        </td>
+        <td><%= link_to 'Посмотреть', category %></td>
+        <td><%= link_to 'Изменить', edit_category_path(category) %></td>
+        <td><%= link_to 'Удалить', category, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Новая категория', new_category_path %>

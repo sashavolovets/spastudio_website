@@ -6,9 +6,10 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 </head>
 
-<body>
+<body class="index">
   <%= render 'layouts/header' %>
 
   <%= yield %>
@@ -16,5 +17,4 @@
   <%= render 'layouts/footer' %>
 </body>
 
-<script src='<%= "https://maps.googleapis.com/maps/api/js?key=#{ENV['google_api_key']}&callback=initMap"  %>' async defer></script>
 </html>

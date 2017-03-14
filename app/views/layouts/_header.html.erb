@@ -1,12 +1,26 @@
 <header class="navbar navbar-default navbar-fixed-top" id="header">
   <div class="container-fluid">
-    <div id="logo"><p>LOGO</p></div>
+    <div class="nav-mobile">
+      <a id="hamburger" class="lines-button x">
+        <span class="lines"></span>
+      </a>
+      <div id="navigation" class="navbar navbar-fixed-top">
+        <ul class="nav-mobile">
+          <li class="link-main"><a class="nav-link-mobile" data-target='main'>Главная</a></li>
+          <li class="link-services"><a class="nav-link-mobile" data-target='services'>Услуги</a></li>
+          <li class="link-contacts"><a class="nav-link-mobile" data-target='contacts'>Контакты</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="logo"><%= image_tag 'spa_salon_logo' %></div>
     <div class='nav-links'>
       <ul class="nav">
-        <li class="active"><a href='' data-target='main'>Главная</a></li>
-        <li><a href='' data-target='services'>Услуги</a></li>
-        <li><a href='' data-target='tour'>3D-тур</a></li>
-        <li><a href='' data-target='contacts'>Контакты</a></li>
+        <li class="link-main"><a class="nav-link active" data-target='main'>Главная</a></li>
+        <li class="link-services"><a class="nav-link" data-target='services'>Услуги</a></li>
+        <% unless request.user_agent.include?('iPhone') or request.user_agent.include?('iPad') or request.user_agent.include?('Android') %>
+          <li class="link-tour"><a class="nav-link" data-target='tour'>3D-тур</a></li>
+        <% end %>
+        <li class="link-contacts"><a class="nav-link" data-target='contacts'>Контакты</a></li>
       </ul>
     </div>
     <div class="contacts">

@@ -1,0 +1,43 @@
+<div class="container" id="categoryContainer">
+  <div class="col-md-8 col-md-offset-2">
+    <ol class="breadcrumb">
+      <li class="active"><%= link_to "Услуги", (root_url + '#services') %></li>
+      <li class="active"><%= @category.name %></li>
+    </ol>
+    <div class="category-block">
+      <h1 class="category-title"><%= @category.name %></h1>
+      <p class="category-description"><%= @category.description.html_safe %></p>
+    </div>
+    <% unless @category.services.empty? %>
+    <div class="arrow">
+      <i class="fa fa-angle-down"></i>
+    </div>
+
+    <% @category.services.each do |service| %>
+      <% min_price = service.price_tags.min_by {|pt| pt.min_price }.min_price %>
+      <% max_price_tag = service.price_tags.max_by {|pt| pt.max_price || pt.min_price } %>
+      <% max_price = max_price_tag.max_price || max_price_tag.min_price %>
+      <!-- <%# p max_price == min_price %> -->
+      <% if max_price == min_price %>
+        <% max_price = nil %>
+      <% end %>
+      <div class="service-block" style='background: url("<%= service.image.url(:original) %>") no-repeat'>
+        <%# image_tag service.image.url(:original), class: 'service-image' %>
+        <div class="text-wrapper">
+          <h2 class="service-name"><%= link_to "#{service.name}", service_info_url(service.category, service), class: 'service-link' %></h2>
+          <h2 class="service-price"><%= min_price %><%= "-#{max_price}" if max_price %> грн</h2>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>
+
+<script>
+  $(document).on("ready", function(){
+    $('.link-main').find('a').attr("href", "<%= root_url %>#main");
+    $('.link-services').find('a').attr("href", "<%= root_url %>#services");
+    $('.link-tour').find('a').attr("href", "<%= root_url %>#tour");
+    $('.link-contacts').find('a').attr("href", "<%= root_url %>#contacts");
+  });
+</script>

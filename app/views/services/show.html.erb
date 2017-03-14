@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Просмотр услуги</h1>
+
+<p><b>Название:</b> <%= @service.name %></p>
+<p><b>Описание:</b> <%= @service.description %></p>
+<p><b>Изображение:</b> <%= image_tag @service.image.url(:original)%> </p>
+<p>
+  <b>Цены:</b> <br>
+  <ul>
+    <% @service.price_tags.each do |pt| %>
+      <li><span class="tag"><%= pt.tag %>:</span> <%= pt.min_price %><%= "-#{pt.max_price}" if pt.max_price %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Изменить', edit_category_service_path(@service) %> |
+<%= link_to 'Назад', category_path(@service.category) %>
+

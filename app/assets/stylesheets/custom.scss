@@ -3,266 +3,692 @@
 @import 'font-awesome-sprockets';
 @import 'variables';
 
+@mixin line {
+  // @media only screen and (min-width: 641px) and (max-width: 980px){
+  //   display: inline-block;
+  //   width: $button-size;
+  //   height: $button-size/7;
+  //   background: $c-white;
+  //   border-radius: $button-size/14;
+  //   transition: $transition;
+  // }
+
+  @media only screen and (max-width: 970px){
+    display: inline-block;
+    width: $button-size/2;
+    height: $button-size/14;
+    background: $c-white;
+    border-radius: $button-size/28;
+    transition: $transition;
+  }
+}
+
 html, body {
   background-color: white;
   height: 100%;
   width: 100%;
   font-family: 'Clear Sans', sans-serif;
   font-size: 16px;
+
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  #header {
+    .contacts {
+      display: none;
+    }
+
+    .social {
+      margin-right: 0 !important;
+      a {
+        margin-right: 8px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #header {
+    .nav {
+      li {
+        margin-right: 50px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 970px) {
+  #header {
+    .container-fluid {
+      padding: 0 10px !important;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    #logo {
+      left: 50%;
+      position: relative;
+      transform: translateX(-95%);
+    }
+  }
+
+  #footer {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  #tour {
+    display: none;
+  }
+
+  .link-tour {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 800px){
+  #map {
+    display: none;
+  }
+
+  #contactsBlock {
+    top: 0 !important;
+    left: 0 !important;
+    height: auto !important;
+    width: 100% !important;
+  }
 }
 
 body {
   padding-top: 60px;
-  color: $c-text-main;
 
-  a {
-    color: $c-text-main;
-    background: transparent;
+  &.management {
+    padding: 0 30px 100px;
+    height: auto;
 
-    &:hover, &:focus {
-      background: transparent;
-      outline: none;
-      border: none;
-      color: $c-text-main;
+    td, th {
+      padding: 10px 15px;
+    }
+
+    .form-container {
+      width: 40%;
+
+      input {
+        margin-bottom: 10px;
+      }
+
+      textarea {
+        height: 150px;
+      }
     }
   }
 
-  /* HEADER START */
+  &.index {
+    color: $c-text-main;
 
-  #header {
-    background-color: $c-main-dark;
-    border: none;
-    height: 60px;
+    h1 {
+      font-weight: bolder;
+      margin-top: 0px;
+      // font-size: 300%;
+      @media screen and (min-width: 501px) {
+        font-size: 300%;
+      }
 
-    .container-fluid{
-      height: 100%;
-      padding: 0 70px;
+      @media screen and (max-width: 500px) {
+        font-size: 200%;
+      }
+    }
 
-      div {
-        float: left;
+    a {
+      color: $c-text-main;
+      background: transparent;
+
+      &:hover, &:focus {
+        background: transparent;
+        outline: none;
+        border: none;
+        color: $c-text-main;
+      }
+
+      &.edit-link {
+        position: relative;
+        left: 30px;
+        top: 20px;
+        text-decoration: underline;
+        color: $c-main-dark;
+      }
+    }
+
+    /* HEADER START */
+
+    #login {
+      label {
+        color: black;
+      }
+
+      input {
+        margin-bottom: 20px;
+      }
+
+      #login {
+        transform: translateX(-50%);
+        position: relative;
+        left: 50%;
+      }
+    }
+
+    #header {
+      background-color: $c-main-dark;
+      border: none;
+      height: 60px;
+
+      .container-fluid{
         height: 100%;
-        margin-left: 100px;
+        padding: 0 70px;
 
-        &#logo{
-          p {
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 180%;
-            color: $c-text-main;
-          }
-        }
+        div {
+          float: left;
+          height: 100%;
 
-        &.social {
-          margin-left: 0;
-          margin-right: 40px;
-          float: right;
-
-          a {
-            margin-right: 15px;
-            i {
+          &#logo{
+            img {
+              width: 68px;
+              height: 50px;
+              margin-top: 4px;
+            }
+            p {
               position: relative;
               top: 50%;
               transform: translateY(-50%);
-              font-size: 130%;
+              font-size: 180%;
+              color: $c-text-main;
+            }
+          }
+
+          &.nav-mobile {
+
+            a#hamburger {
+              // position: absolute;
+              // left: 0;
+              float: left;
+              top: -8px;
+              color: $c-text-main;
+              padding: 1.16667rem 0;
+
+              &:hover{
+                opacity: 1 !important;
+              }
+            }
+
+            .lines-button {
+              display: inline-block;
+              padding: $button-size/2 $button-size/4;
+              transition: .3s;
+              cursor: pointer;
+              user-select: none;
+              border-radius: $button-size/7;
+
+              &:hover {
+                opacity: 1;
+              }
+
+              &:active {
+                opacity: 1;
+              }
+
+              &:focus {
+                opacity: 1;
+              }
+
+              .lines {
+                @include line;
+                position: relative;
+                top: -3px;
+
+                &:before, &:after {
+
+                  @include line;
+                  position: absolute;
+                  left:0;
+                  content: '';
+                  transform-origin: $button-size/14 center;
+                }
+                &:before {
+                    top: $button-size/7;
+                }
+                &:after {
+                    top: -$button-size/7;
+                }
+              }
+            }
+
+            .lines-button:hover{
+              opacity: 1;
+
+              .lines {
+                &:before {
+                  top: $button-size/5.5;
+                }
+                &:after {
+                  top: -$button-size/5.5;
+                }
+              }
+            }
+
+            .close {
+              opacity: 1;
+            }
+
+            .lines-button.x.close .lines{
+              background: transparent;
+              opacity: 1;
+              &:before, &:after{
+                transform-origin: 50% 50%;
+                top:0;
+                background: $c-white;
+                width: $button-size/2;
+              }
+
+
+              &:before{
+                transform: rotate3d(0,0,1,45deg);
+              }
+              &:after{
+                transform: rotate3d(0,0,1,-45deg);
+              }
+            }
+
+            #navigation {
+              display: none;
+              z-index: 4;
+              height: auto;
+              background: $c-main-dark;
+              opacity: 1;
+              width: 100%;
+              text-align: center;
+              display: none;
+              border: none;
+              top: 60px;
+              ul {
+                text-align: center;
+                position: relative;
+                margin: 10px auto 50px;
+                padding: 0;
+                list-style: none;
+                li {
+                  clear: both;
+                  padding: 15px;
+
+                  a {
+                    transition: .3s;
+                    cursor: pointer;
+                    color: $c-text-main;
+                    font: $font-family-base;
+                    font-size: 1.3rem;
+                    text-transform: uppercase;
+
+                    &:hover, &:focus {
+                      color: $c-text-main;
+                      background: transparent;
+                      outline: none;
+                      border: none;
+                      opacity: 1;
+                    }
+
+                    &.active {
+                      opacity: 1;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &.social {
+            margin-left: 0;
+            margin-right: 40px;
+            float: right;
+
+            a {
+              margin-right: 15px;
+              i {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 130%;
+              }
+            }
+          }
+
+          &.contacts {
+            margin-left: 0;
+            float: right;
+            .phone-number {
+              margin: 0;
+              font-size: 80%;
+              transform: translateY(55%);
+              position: relative;
+              color: $c-text-main;
+            }
+          }
+
+          &:last-child{
+            margin-left: 0px;
+          }
+        }
+
+        .nav-links {
+          margin-left: 10%;
+          .nav {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            li {
+              display: inline;
+              color: $c-text-main;
+              margin-right: 90px;
+
+              a {
+                display: inline;
+                opacity: 0.5;
+                transition: .3s;
+                cursor: pointer;
+
+                &:hover, &:focus {
+                  color: $c-text-main;
+                  background: transparent;
+                  outline: none;
+                  border: none;
+                  opacity: 1;
+                }
+
+                &.active {
+                  opacity: 1;
+                }
+              }
+
+              &:last-child {
+                margin-right: 0px;
+              }
             }
           }
         }
+      }
+    }
 
-        &.contacts {
-          margin-left: 0;
-          float: right;
-          .phone-number {
-            margin: 0;
-            font-size: 80%;
-            transform: translateY(55%);
-            position: relative;
-            color: $c-text-main;
+    /* HEADER END */
+
+    /* MAIN CONTAINER START */
+
+    .divider{
+      background: $c-brown;
+      height: 6px;
+      width: 130px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .page {
+      min-height: 100%;
+      width: 100%;
+      padding: 50px 0;
+      margin: 0;
+
+      &#main {
+        height: 100%;
+        .unslider{
+          height: 80%;
+          transform: translateY(-50%);
+          position: relative;
+          top: 50%;
+          #slider {
+            height: 100%;
+            .unslider-wrap{
+              height: 100%;
+              li{
+                width: 100%; height: 100%;
+                .element-wrapper {
+                  position: relative;
+                  height: 100%;
+                  width: 100%;
+                  background-size: cover !important;
+                  background-position: center !important;
+                }
+              }
+            }
           }
-        }
 
-        &:last-child{
-          margin-left: 0px;
+          .arrows-nav {
+            top: 50% !important;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            z-index: 4 !important;
+            position: absolute;
+            color: #ffffff;
+            font-size: 5rem;
+            opacity: 0.44;
+            transition: .3s;
+            text-decoration: none !important;
+
+            &:hover{
+              opacity: 1;
+            }
+          }
+
+          .arrow-left, .arrow-right{
+
+          }
+
+          .arrow-right {
+            right: 2% !important;
+          }
+          .arrow-left {
+            left: 2% !important;
+          }
+
+          .unslider-nav{
+            transform: translateY(-200%);
+            position: relative;
+            z-index: 1;
+
+            ol{
+              li{
+                border: none !important;
+                background-color: #fff;
+                opacity: 0.5;
+                transition: .3s;
+                width: 10px;
+                height: 10px;
+              }
+
+              li.unslider-active{
+                opacity: 1;
+              }
+            }
+          }
         }
       }
 
-      .nav-links {
-        .nav {
-          position: relative;
-          top: 50%;
-          transform: translateY(-50%);
-          li {
-            display: inline;
-            color: $c-text-main;
-            opacity: 0.5;
-            margin-right: 90px;
+      &#services {
+        #servicesWrapper {
+          margin: 50px 0;
 
-            a {
-              display: inline;
+          .row {
+            height: auto;
+            margin: 0;
+            margin-bottom: 6%;
+            padding: 0;
 
-              &:hover, &:focus {
-                color: $c-text-main;
-                background: transparent;
-                outline: none;
-                border: none;
+            .block {
+              height: auto;
+              background-color: $c-main-dark;
+              padding: 0;
+              -webkit-box-shadow: 0px 13px 31px -17px rgba(0,0,0,0.75);
+              -moz-box-shadow: 0px 13px 31px -17px rgba(0,0,0,0.75);
+              box-shadow: 0px 13px 31px -17px rgba(0,0,0,0.75);
+
+              .catImage {
+                position: relative;
+                width: 100%
+              }
+
+              .catName {
+                margin-left: 15px;
+                margin-top: 15px;
+                padding-bottom: 15px;
               }
             }
+          }
+        }
+      }
+
+      &#tour {
+        height: 100%;
+        background-color: $c-main-light;
+
+        .content-wrapper {
+          height: 70%;
+          top: 50%;
+          position: relative;
+          transform: translateY(-50%);
+
+          #tourWrapper {
+            height: 100%;
+            background-color: $c-main-dark;
+            padding: 0;
+            background-size: contain !important;
+            background-position: center !important;
+
+            #tourLink {
+              text-transform: uppercase;
+              background-color: $c-text-main;
+              color: $c-main-dark;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              height: 65px;
+              width: 65px;
+              text-align: center;
+              vertical-align: middle;
+              font-weight: bold;
+              font-size: 220%;
+              border-radius: 50%;
+              line-height: 179%;
+              text-decoration: none;
+
+              &:hover {
+                text-decoration: none;
+              }
+            }
+          }
+
+          #tourInfo {
+            margin-left: 3%;
+            height: 100%;
+
+
+            p {
+              font-size: 100%;
+            }
+          }
+        }
+      }
+
+      &#contacts {
+        padding: 0;
+        height: 100%;
+        #contactsWrapper {
+          height: 100%;
+          padding: 0;
+
+          #map {
+            height: 100%;
+            width: 100%;
+          }
+
+          #contactsBlock {
+            position: relative;
+            top: -90%;
+            left: 10%;
+            height: 80%;
+            width: 40%;
+            background-color: $c-main-light;
+            padding: 30px 40px;
+            overflow: hidden;
+            // min-width: 400px;
+
+            #messageEmail, #messageBody, #submit{
+              margin-top: 15px;
+            }
+
+            #messageBody {
+              height: 100px;
+              resize: none;
+            }
+
+            #submit {
+              background-color: $c-main-dark;
+              float: right;
+              border: none;
+            }
+
+            #response {
+              margin-top: 15px;
+
+              &.error {
+                color: rgb(166, 44, 31);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* MAIN CONTAINER END */
+
+    /* FOOTER START */
+
+    #footer {
+      background-color: $c-main-dark;
+      padding: 50px 0 100px;
+      .row {
+        margin-right: 0;
+        margin-left: 0;
+      }
+
+      .block {
+        @media (min-width: 992px) {
+          width: 20%;
+        }
+        p {
+          font-size: 80%;
+        }
+
+        &#footer-social {
+          a {
+            margin-right: 10px;
 
             &:last-child {
               margin-right: 0px;
             }
-
-            &.active {
-              opacity: 1;
-            }
+          }
+          i {
+            font-size: 140%;
           }
         }
       }
     }
+
+    /* FOOTER END */
   }
-
-  /* HEADER END */
-
-  /* MAIN CONTAINER START */
-
-  .divider{
-    background: $c-brown;
-    height: 6px;
-    width: 130px;
-    display: block;
-    margin: 0 auto;
-  }
-
-  .page {
-    min-height: 100%;
-    width: 100%;
-    padding: 50px 0;
-    margin: 0;
-
-    &#main {
-      height: 100%;
-      .unslider{
-        height: 70%;
-        transform: translateY(-50%);
-        position: relative;
-        top: 50%;
-        #slider {
-          height: 90%;
-          .unslider-wrap{
-            height: 100%;
-            li{
-              height: 100%;
-            }
-          }
-        }
-      }
-    }
-
-    &#services {
-      #servicesWrapper {
-        margin: 50px 0;
-
-        .row {
-          height: auto;
-          margin: 0;
-          margin-bottom: 6%;
-          padding: 0;
-
-          .block {
-            height: 185px;
-            background-color: $c-main-light;
-          }
-        }
-      }
-    }
-
-    &#tour {
-      height: 100%;
-      background-color: $c-main-light;
-
-      .content-wrapper {
-        height: 70%;
-        top: 50%;
-        position: relative;
-        transform: translateY(-50%);
-
-        #tourWrapper {
-          height: 100%;
-          background-color: $c-main-dark;
-          padding: 0;
-
-          #tourLink {
-            text-transform: uppercase;
-            background-color: $c-text-main;
-            color: $c-main-dark;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            height: 65px;
-            width: 65px;
-            text-align: center;
-            vertical-align: middle;
-            font-weight: bold;
-            font-size: 220%;
-            border-radius: 50%;
-            line-height: 179%;
-
-            &:hover {
-              text-decoration: none;
-            }
-          }
-        }
-
-        #tourInfo {
-          margin-left: 3%;
-          height: 100%;
-
-          h1 {
-            font-weight: bolder;
-            margin-top: 0px;
-          }
-
-          p {
-            font-size: 100%;
-          }
-        }
-      }
-    }
-  }
-
-
-  /* MAIN CONTAINER END */
-
-  /* FOOTER START */
-
-  #footer {
-    background-color: $c-main-dark;
-    padding: 50px 0 100px;
-
-    .block {
-      @media (min-width: 992px) {
-        width: 20%;
-      }
-      p {
-        font-size: 80%;
-      }
-
-      &#footer-social {
-        a {
-          margin-right: 10px;
-
-          &:last-child {
-            margin-right: 0px;
-          }
-        }
-        i {
-          font-size: 140%;
-        }
-      }
-    }
-  }
-
-  /* FOOTER END */
 }
 

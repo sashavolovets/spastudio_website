@@ -1,0 +1,39 @@
+<div class="container" id="serviceContainer">
+  <div class="col-md-8 col-md-offset-2">
+    <ol class="breadcrumb">
+      <li class="active"><%= link_to "Услуги", (root_url + '#services') %></li>
+      <li class="active"><%= link_to "#{@service.category.name}", cat_info_url(@service.category) %></li>
+      <li class="active"><%= @service.name %></li>
+    </ol>
+    <div class="service-block">
+      <div class="service-details">
+        <h1 class="service-title"><%= @service.name %></h1>
+        <div class="wrapper row">
+          <!-- <div class="service-description col-md-6">
+            <p class=""><%= @service.description %></p>
+          </div -->
+          <div class="prices">
+          <% @service.price_tags.each do |pt| %>
+            <div class="price-wrap">
+              <div class="tag"><p><%= pt.tag %></p></div>
+              <div class="price"><p><%= pt.min_price %><%= "–#{pt.max_price}" if pt.max_price %> грн</p></div>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="service-image" style=' background-image: url("<%= @service.image.url(:original) %>")'>
+      </div>
+      <%# image_tag @service.image.url(:original), class: 'service-image' %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).on("ready", function(){
+    $('.link-main').find('a').attr("href", "<%= root_url %>#main");//.attr('data-no-turbolink', "");
+    $('.link-services').find('a').attr("href", "<%= root_url %>#services");//.attr('data-no-turbolink', "");
+    $('.link-tour').find('a').attr("href", "<%= root_url %>#tour");//.attr('data-no-turbolink', "");
+    $('.link-contacts').find('a').attr("href", "<%= root_url %>#contacts");//.attr('data-no-turbolink', "");.attr('data-no-turbolink', "");
+  });
+</script>

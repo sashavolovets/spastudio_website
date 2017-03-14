@@ -1,0 +1,8 @@
+// $("<%= @price_tag.id %>").attr('action', "<%= service_price_tag_url(@service, @price_tag) %>")
+console.log('<%= @price_tag.id %>')
+$('#<%= @old_id %>').attr('action', '<%= service_price_tag_path(@price_tag.service, @price_tag) %>');
+$('#<%= @old_id %>').find('.remove-pt')
+                    .attr('href', '<%= service_price_tag_url(@price_tag.service, @price_tag) %>')
+                    .removeClass('remove-pt')
+                    .addClass('delete-pt');
+$('#<%= @old_id %>').attr('id', '<%= @price_tag.id %>');

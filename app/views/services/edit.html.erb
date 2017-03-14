@@ -1,0 +1,8 @@
+<h1>Изменить услугу</h1>
+
+<div class='form-container'>
+  <%= render 'form', service: @service %>
+</div>
+
+<%= link_to 'Посмотреть', category_service_path %> |
+<%= link_to 'Назад', category_path(@service.category_id) %>

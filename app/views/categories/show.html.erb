@@ -1,0 +1,22 @@
+<h1>Просмотр категории</h1>
+
+<p><b>Название:</b> <%= @category.name %></p>
+<p><b>Описание:</b> <%= @category.description %></p>
+<p><b>Изображение:</b> <%= image_tag @category.image.url(:big)%> </p>
+<p>
+  <b>Услуги:</b> <br>
+  <ul>
+    <% @category.services.each do |service| %>
+      <li>
+        <%= service.name %>
+        <%= link_to "Посмотреть", category_service_path(@category, service) %> |
+        <%= link_to "Изменить", edit_category_service_path(@category, service) %> |
+        <%= link_to "Удалить", category_service_path(@category), method: :delete, data: { confirm: 'Вы уверены?'}  %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to "Добавить услугу", new_category_service_path(@category)  %>
+</p>
+
+<%= link_to 'Изменить', edit_category_path(@category) %> |
+<%= link_to 'Назад', categories_path %>

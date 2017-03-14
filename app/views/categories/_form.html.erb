@@ -1,0 +1,22 @@
+<%= form_for(category, :html => { multipart: true }) do |f| %>
+  <% if category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_field :name, class: 'form-control', id: 'categoryName', placeholder: 'Название' %>
+  <%= f.text_area :description, class: 'form-control', id: 'categoryDescription', placeholder: 'Описание'%>
+  <label for="categoryImage">Изображение: <%= image_tag category.image.url(:small) %></label>
+  <%= f.file_field :image, id: 'categoryImage' %>
+
+  <div class="actions">
+    <%= f.submit 'Продолжить', class: 'btn btn-default' %>
+  </div>
+<% end %>

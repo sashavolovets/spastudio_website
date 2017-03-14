@@ -36,6 +36,9 @@ gem 'font-awesome-rails'
 # Use Figaro for env
 gem 'figaro'
 
+# Use Paperclip for attachments
+gem 'paperclip'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

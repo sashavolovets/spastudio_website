@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SpaStudio</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body class="management">
+  <!-- <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%# flash.each do |message_type, message| %>
+        <div class="alert alert-<%# message_type %>"><%# message %></div>
+      <%# end %>
+    </div>
+  </div> -->
+  <div class="links" style="position: fixed; right: 15px; top: 10px;">
+    <%= link_to "Назад к сайту", root_url%>
+    <% if logged_in? %>
+       | <%= link_to  "Выйти", logout_url, :method => :delete%>
+    <% end %>
+  </div>
+  <%= yield %>
+
+</body>
+</html>

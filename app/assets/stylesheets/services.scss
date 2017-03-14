@@ -1,0 +1,111 @@
+// Place all the styles related to the services controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'variables';
+
+@media only screen and (min-width: 991px){
+  .prices {
+    // padding-left: 50px !important;
+  }
+}
+
+@media only screen and (max-width: 990px){
+  .prices {
+    padding-top: 30px;
+  }
+}
+
+.index {
+  #serviceContainer {
+    width: 100%;
+    padding-top: 100px;
+    padding-left: 0;
+    padding-right: 0;
+
+    .service-block {
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 150px;
+      margin-bottom: 100px;
+
+      .service-details {
+        background-color: $c-main-light;
+        padding: 7% 10%;
+        position: relative;
+        z-index: 2;
+        .service-name {
+
+        }
+
+        .wrapper {
+          width: 100%;
+          overflow: hidden;
+
+          .service-description {
+            padding: 0;
+          }
+
+          .prices {
+            text-align: right;
+            padding-left: 0;
+            padding-right: 0;
+
+            .price-wrap{
+              margin-bottom: 10px;
+              width: 100%;
+              .tag {
+                float: left;
+                text-align: left;
+                width: 60%;
+              }
+
+              .price {
+                float:right;
+                text-align: right;
+                width: 40%;
+              }
+            }
+          }
+        }
+      }
+      .service-image {
+        width: 100%;
+        @media screen and (max-width: 1300px) {
+          height: 32%;
+        }
+        @media screen and (min-width: 1301px) {
+          height: 38%;
+        }
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        // background: -webkit-linear-gradient(rgba(71,71,71,0.02) 0%, rgba(43,43,43,1) 200%) no-repeat;
+        // background: -o-linear-gradient(rgba(71,71,71,0.02) 0%, rgba(43,43,43,1) 200%) no-repeat;
+        background: no-repeat;
+        background-size: cover !important;
+        background-position: center !important;
+
+        // .image {
+        //   width: 100%;
+        // }
+      }
+    }
+  }
+}
+
+.management {
+  .form-container {
+    .delete-pt{
+      margin-top: -10px;
+    }
+
+    #newPriceTag {
+      margin-left: 15px;
+    }
+
+    .actions{
+      margin-top: 20px;
+    }
+  }
+}

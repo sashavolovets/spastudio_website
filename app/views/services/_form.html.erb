@@ -1,0 +1,36 @@
+<%= form_for([:category, service]) do |f| %>
+  <%# if service.errors.any? %>
+    <!-- <div id="error_explanation">
+      <h2><%# pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
+
+      <ul>
+      <%# service.errors.full_messages.each do |message| %>
+        <li><%# message %></li>
+      <%# end %>
+      </ul>
+    </div> -->
+  <%# end %>
+
+  <%= f.text_field :name, class: 'form-control', id: 'serviceName', placeholder: 'Название' %>
+  <%= f.text_area :description, class: 'form-control', id: 'serviceDescription', placeholder: 'Описание'%>
+  <label for="categoryImage">Изображение: <%= image_tag service.image.url(:small) %></label>
+  <%= f.file_field :image, id: 'serviceImage' %>
+
+  <div class="actions">
+    <%= f.submit 'Продолжить', class: 'btn btn-default' %>
+  </div>
+<% end %>
+
+<div class="prices-container">
+    <p><b>Цены: <br></b></p>
+    <% service.price_tags.each do |pt| %>
+        <%= form_tag([service, pt], method: :put, remote: true, class: 'form-inline price-tag', id: "#{pt.id}") do |f| %>
+          <%= text_field_tag "price_tag[tag]", pt.tag, class: 'form-control' %>
+          <%= text_field_tag "price_tag[min_price]", pt.min_price, class: 'form-control' %>
+          <%= text_field_tag "price_tag[max_price]", pt.max_price, class: 'form-control' %>
+          <%= submit_tag "Сохранить", class: 'btn btn-default' %>
+          <%= link_to "Удалить", service_price_tag_url(service, pt), method: :delete, remote: true, class: 'btn btn-default delete-pt' %>
+        <% end -%>
+    <% end %>
+  </div>
+<a href="" id="newPriceTag" data-service-id='<%= service.id %>'><i class="fa fa-plus"></i></a>

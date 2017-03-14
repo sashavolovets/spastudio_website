@@ -1,53 +1,92 @@
-
 <div class="page row" id="main">
   <div id="slider">
     <ul>
       <li>
-        <div class="element-wrapper"></div>
+        <div class="element-wrapper" style='background: url("<%= image_path('slider/slider1') %>") no-repeat'>
+
+        </div>
       </li>
       <li>
-        <div class="element-wrapper"></div>
+        <div class="element-wrapper" style='background: url("<%= image_path('slider/slider5') %>") no-repeat'>
+
+        </div>
       </li>
       <li>
-        <div class="element-wrapper"></div>
+        <div class="element-wrapper" style='background: url("<%= image_path('slider/slider3') %>") no-repeat'>
+
+        </div>
       </li>
       <li>
-        <div class="element-wrapper"></div>
+        <div class="element-wrapper" style='background: url("<%= image_path('slider/slider4') %>") no-repeat'>
+
+        </div>
       </li>
       <li>
-        <div class="element-wrapper"></div>
+        <div class="element-wrapper" style='background: url("<%= image_path('slider/slider2') %>") no-repeat'>
+
+        </div>
       </li>
     </ul>
   </div>
 </div>
 <div class="page row" id="services">
   <div class="divider"></div>
+  <% if logged_in? %>
+    <%= link_to 'Управлять услугами', categories_path, class: 'edit-link' %>
+  <% end %>
   <div id="servicesWrapper">
+    <% @categories.each_slice(3) do |slice| %>
     <div class="row">
-      <div class="col-md-offset-2 col-md-2 block"></div>
-      <div class="col-md-offset-1 col-md-2 block"></div>
-      <div class="col-md-offset-1 col-md-2 block"></div>
+      <% slice.each.with_index do |cat, i| %>
+        <% if i == 0 %>
+          <div class="col-md-offset-2 col-md-2 block">
+        <% else %>
+          <div class="col-md-offset-1 col-md-2 block">
+        <% end %>
+          <a href="<%= cat_info_url(cat) %>"><%= image_tag cat.image.url(:hd), class: 'catImage' %></a>
+          <p class="catName"><%= link_to "#{cat.name}", cat_info_path(cat) %></p>
+        </div>
+      <% end %>
     </div>
-    <div class="row">
-      <div class="col-md-offset-2 col-md-2 block"></div>
-      <div class="col-md-offset-1 col-md-2 block"></div>
-      <div class="col-md-offset-1 col-md-2 block"></div>
+    <% end %>
+  </div>
+</div>
+<% unless @mobile %>
+  <div class="page row" id="tour">
+    <div class="content-wrapper col-md-offset-2 col-md-9">
+      <div id="tourWrapper" class="col-md-7" style='background: url("<%= image_path('slider/slider3') %>") no-repeat'><a href="http://iexpo3d.com/karta3d/kyiv/krasa/spa-studio/spa-studio.html" target='_blank' id="tourLink">Go</a></div>
+      <div class="info col-md-4" id="tourInfo">
+        <h1>3D-тур</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint oc- caecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
     </div>
-    <div class="row">
-      <div class="col-md-offset-2 col-md-2 block"></div>
-      <div class="col-md-offset-1 col-md-2 block"></div>
-      <div class="col-md-offset-1 col-md-2 block"></div>
+  </div>
+<% end %>
+<div class="page row" id="contacts">
+  <div id="contactsWrapper" class="col-md-offset-2 col-md-8">
+    <div id="map"></div>
+    <div id="contactsBlock">
+      <h1>Контакты</h1>
+      <p><br>просп. Героев Сталинграда 10а, корп. 4 <br><br>
+        +38 044 230 8930<br>+38 067 889 2496 <br><br>
+        spastudio.ua@gmail.com <br><br>
+        Время работы:<br>9:00 – 21:00<br>Без выходных
+      </p>
+      <%= form_tag(send_message_url, remote: true, id: 'sendMessageForm', class: 'form' ) do %>
+      <%= text_field_tag 'message[email]', '',class: 'form-control', id: 'messageEmail', placeholder: 'Ваш email' %>
+      <%= text_area_tag 'message[body]', '',class: 'form-control', id: 'messageBody', placeholder: 'Ваше сообщение...' %>
+      <%= submit_tag 'Отправить', id: 'submit' %>
+      <p id="response"></p>
+      <% end %>
     </div>
   </div>
 </div>
-<div class="page row" id="tour">
-  <div class="content-wrapper col-md-offset-2 col-md-9">
-    <div id="tourWrapper" class="col-md-7"><a href="" id="tourLink">Go</a></div>
-    <div class="info col-md-4" id="tourInfo">
-      <h1>3D-тур</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint oc- caecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-  </div>
-</div>
-<div class="page row" id="contacts"></div>
+
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['google_api_key']}&callback=initMap" unless @mobile %>
+
+<script>
+  $(document).on('ready', function(){
+    $('.nav-link').removeAttr('href');
+  });
+</script>
 
