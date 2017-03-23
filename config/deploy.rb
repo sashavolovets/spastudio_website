@@ -1,4 +1,4 @@
-server '139.162.131.24', port: 22, roles: [:web, :app], primary: true
+server '139.162.131.24', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:mityakoval/spastudio_website.git'
 set :application,     'spastudio_website'
