@@ -38,6 +38,7 @@ gem 'figaro'
 
 # Use Paperclip for attachments
 gem 'paperclip'
+gem 'yaml_db'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
