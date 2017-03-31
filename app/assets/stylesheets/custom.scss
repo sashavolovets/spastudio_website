@@ -624,7 +624,8 @@ body {
             background-color: $c-main-light;
             padding: 30px 40px;
             overflow: hidden;
-            // min-width: 400px;
+            min-width: 313px;
+            min-height: 600px;
 
             #messageEmail, #messageBody, #submit{
               margin-top: 15px;
