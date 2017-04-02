@@ -17,7 +17,7 @@
   <%= f.file_field :image, id: 'serviceImage' %>
 
   <div class="actions">
-    <%= f.submit 'Продолжить', class: 'btn btn-default' %>
+    <%= f.submit 'Сохранить услугу', class: 'btn btn-default' %>
   </div>
 <% end %>
 
@@ -28,8 +28,8 @@
           <%= text_field_tag "price_tag[tag]", pt.tag, class: 'form-control' %>
           <%= text_field_tag "price_tag[min_price]", pt.min_price, class: 'form-control' %>
           <%= text_field_tag "price_tag[max_price]", pt.max_price, class: 'form-control' %>
-          <%= submit_tag "Сохранить", class: 'btn btn-default' %>
-          <%= link_to "Удалить", service_price_tag_url(service, pt), method: :delete, remote: true, class: 'btn btn-default delete-pt' %>
+          <%= submit_tag "Сохранить цену", class: 'btn btn-default' %>
+          <%= link_to "Удалить цену", service_price_tag_url(service, pt), method: :delete, remote: true, class: 'btn btn-default delete-pt' %>
         <% end -%>
     <% end %>
   </div>
